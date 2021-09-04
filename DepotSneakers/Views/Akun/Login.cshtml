@@ -1,45 +1,90 @@
 ﻿@model DepotSneakers.Models.ViewModels.LoginViewModel
-<h2>Masuk</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            <form id="account" method="post" asp-action="Login" asp-controller="Account">
-                <h4>Use your registered email id and password to login.</h4>
-                <hr />
-                <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="form-group row">
-                    <label class="col-md-2" asp-for="Email"></label>
-                    <div class=" col-md-10">
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-md-2" asp-for="Password"></label>
-                    <div class=" col-md-10">
-                        <input asp-for="Password" class="form-control" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
 
-                    <div class=" col-md-10 offset-md-2 checkbox">
-                        <label asp-for="RememberMe" class="pr-4 pl-0">
-                            <input asp-for="RememberMe" />
-                        </label>
-                        Ingat saya?
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-10 offset-md-2">
-                        <input type="submit" value="Log in" class="btn btn-success" />
-                    </div>
-                </div>
-                <p class="col-md-10 offset-md-2">
-                    <a asp-action="Register">Daftar</a>
-                </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Log in</title>
 
-            </form>
-        </section>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/theme/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="~/theme/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/theme/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition login-page">
+    <div class="login-logo">
+        <b>DEPOT</b>Sneakers</a>
     </div>
-</div> 
+    <div class="login-box">
+        <div class="login-logo">
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <section id="loginForm">
+                <div class="card-body login-card-body">
+                    <p class="login-box-msg">Login menggunakan email dan password</p>
+                    <form id="account" method="post" asp-action="Login" asp-controller="Account">
+                        <div class="input-group mb-3">
+                            <input asp-for="Email" type="email" class="form-control" placeholder="Email">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-envelope"></span>
+                                </div>
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="icheck-primary">
+                                    <input type="checkbox" id="remember">
+                                    <label for="remember">
+                                        Remember Me
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    </form>
+
+                    <p class="mb-0">
+                        <a href="register.html" class="text-center">Daftar akun baru</a>
+                    </p>
+                </div>
+                <!-- /.login-card-body -->
+            </section>
+        </div>
+    </div>
+    <!-- /.login-box -->
+    <!-- jQuery -->
+    <script src="~/theme/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/theme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/theme/dist/js/adminlte.min.js"></script>
+</body>
+</html>
+
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+}

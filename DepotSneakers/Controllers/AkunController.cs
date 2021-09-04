@@ -17,7 +17,7 @@ namespace DepotSneakers.Controllers
 
         public IActionResult Login()
         {            
-            return View();
+            return PartialView();
         }
     }
 }
