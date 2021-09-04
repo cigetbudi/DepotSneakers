@@ -15,7 +15,7 @@ namespace DepotSneakers.Controllers
             _db = db;
         }
 
-        public IActionResult Index()
+        public IActionResult Login()
         {            
             return View();
         }
