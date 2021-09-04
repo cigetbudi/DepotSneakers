@@ -10,6 +10,14 @@
     <link href="~/theme/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
     <!-- Theme style -->
     <link href="~/theme/dist/css/adminlte.css" rel="stylesheet" />
+    @*BAWAAN TUTOR*@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/fullcalendar.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/fullcalendar.print.css" media="print" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.2.513/styles/kendo.default-v2.min.css" />
+    <link href="~/lib/select2/css/select2.css" rel="stylesheet" />
+
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -52,6 +60,7 @@
                         </form>
                     </div>
                 </li>
+
 
                 <!-- Messages Dropdown Menu -->
                 <li class="nav-item dropdown">
@@ -148,6 +157,9 @@
                         <i class="fas fa-th-large"></i>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <partial name="_LoginPartial" />
+                </li>
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -217,7 +229,7 @@
                                 </li>
                             </ul>
                         </li>
-                        
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -247,6 +259,12 @@
     <!-- AdminLTE for demo purposes -->
     <script src="~/theme/dist/js/demo.js"></script>
 
+    <!-- BAWAAN TUTOR -->
+    <script src="~/js/script-custom-calendar.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/combine/npm/fullcalendar@5.5.1"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.2.513/js/kendo.all.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

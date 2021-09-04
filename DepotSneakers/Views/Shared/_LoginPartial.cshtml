@@ -1,0 +1,13 @@
+﻿@*@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> SignInmanager*@
+
+
+<ul class="nav navbar-nav">
+    <li class="nav-item">
+        @*@Html.ActionLink("Daftar", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })*@
+        <a class="nav-link text-black" id="registerLink" asp-controller="Account" asp-action="Register">Daftar</a>
+    </li>
+    <li>
+        <a class="nav-link text-black" id="loginLink" asp-controller="Account" asp-action="Login">Masuk</a>
+        @*@Html.ActionLink("Masuk", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })*@
+    </li>
+</ul>
