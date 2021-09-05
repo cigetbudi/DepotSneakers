@@ -19,5 +19,10 @@ namespace DepotSneakers.Controllers
         {            
             return PartialView();
         }
+
+        public IActionResult Daftar()
+        {
+            return PartialView();
+        }
     }
 }
