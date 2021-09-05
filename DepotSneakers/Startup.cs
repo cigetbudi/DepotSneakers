@@ -51,6 +51,8 @@ namespace DepotSneakers
             app.UseStaticFiles();
 
             app.UseRouting();
+            //menggunakan autentitikasi login
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

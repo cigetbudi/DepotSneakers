@@ -1,5 +1,6 @@
 ﻿using DepotSneakers.Models;
 using DepotSneakers.Models.ViewModels;
+using DepotSneakers.Utility;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -29,8 +30,13 @@ namespace DepotSneakers.Controllers
             return PartialView();
         }
 
-        public IActionResult Daftar()
+        public async Task <IActionResult> Daftar()
         {
+            if (!_roleManager.RoleExistsAsync(Helper.Owner).GetAwaiter().GetResult())
+            {
+                await _roleManager.CreateAsync(new IdentityRole(Helper.Owner));
+                await _roleManager.CreateAsync(new IdentityRole(Helper.Admin));
+            }
             return PartialView();
         }
         [HttpPost]
@@ -48,6 +54,7 @@ namespace DepotSneakers.Controllers
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, model.RoleName);
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
