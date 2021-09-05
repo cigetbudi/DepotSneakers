@@ -19,9 +19,9 @@
 <body class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
-            <a href="~/theme/index2.html"><b>DEPOT</b>Sneakers</a>
+            <a asp-controller="Home" asp-action="Index"><b>DEPOT</b>Sneakers</a>
         </div>
-
+        <div asp-validation-summary="All" class="text-danger"></div>
         <div class="card">
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Daftar akun baru</p>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Retype password">
+                        <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password">
                         <div asp-for="ConfirmPassword" class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -68,26 +68,23 @@
                         <div class=" col-md-12">
                             @*<input asp-for="RoleName" asp-items="@AppointmentScheduling.Utility.Helper.GetRolesForDropDown()" class="form-control" />*@
                             <select asp-for="RoleName" asp-items="@DepotSneakers.Utility.Helper.GetRolesFromDropDown()" class="form-control custom-select rounded-0"></select>
-                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            
                         </div>
                     </div>
 
-
-
-
                     <div class="row">
                         <div class="col-8">
-                            
+
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                            <button type="submit" class="btn btn-primary btn-block">Daftar</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
 
-                
+
 
                 <a href="login.html" class="text-center">Sudah punya akun? Login</a>
             </div>
@@ -103,3 +100,9 @@
     <script src="~/theme/dist/js/adminlte.min.js"></script>
 </body>
 </html>
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+}
