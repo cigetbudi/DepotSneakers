@@ -42,7 +42,7 @@ namespace DepotSneakers.Controllers
                     return RedirectToAction("Index", "Home");
                 }
 
-                ModelState.AddModelError("", "Invalid login attempt");
+                ModelState.AddModelError("", "gagal login");
             }
             return PartialView(model);
         }
@@ -69,9 +69,10 @@ namespace DepotSneakers.Controllers
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    Name = model.Name
+                    Name = model.Name,
+                    
                 };
-                var result = await _userManager.CreateAsync(user);
+                var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, model.RoleName);
