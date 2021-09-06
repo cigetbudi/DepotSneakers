@@ -68,7 +68,7 @@
                         <div class=" col-md-12">
                             @*<input asp-for="RoleName" asp-items="@AppointmentScheduling.Utility.Helper.GetRolesForDropDown()" class="form-control" />*@
                             <select asp-for="RoleName" asp-items="@DepotSneakers.Utility.Helper.GetRolesFromDropDown()" class="form-control custom-select rounded-0"></select>
-                            
+
                         </div>
                     </div>
 
@@ -84,9 +84,7 @@
                     </div>
                 </form>
 
-
-
-                <a href="login.html" class="text-center">Sudah punya akun? Login</a>
+                <a asp-controller="Akun" asp-action="Login" class="text-center" id="loginLink">Sudah punya akun? Login</a>
             </div>
             <!-- /.form-box -->
         </div><!-- /.card -->
