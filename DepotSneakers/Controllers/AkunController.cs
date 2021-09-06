@@ -17,7 +17,7 @@ namespace DepotSneakers.Controllers
         SignInManager<ApplicationUser> _signInManager;
         RoleManager<IdentityRole> _roleManager;
 
-        public AkunController(ApplicationDbContext db, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager)
+        public AkunController(ApplicationDbContext db, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<ApplicationUser> signInManager)
         {
             _db = db;
             _userManager = userManager;
@@ -29,6 +29,26 @@ namespace DepotSneakers.Controllers
         {            
             return PartialView();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                ModelState.AddModelError("", "Invalid login attempt");
+            }
+            return PartialView(model);
+        }
+
+
+
 
         public async Task <IActionResult> Daftar()
         {
@@ -58,8 +78,19 @@ namespace DepotSneakers.Controllers
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
             }
-            return PartialView();
+            return PartialView(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Keluar()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login", "Akun");
         }
     }
 }
+
